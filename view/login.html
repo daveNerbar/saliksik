@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SALIKSIK Login</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://kit.fontawesome.com/985df08261.js" crossorigin="anonymous"></script>
+
+  <style>
+    /* --- GENERAL RESET --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      /* Background Image settings */
+      background-image: url('pup school.jpg'); 
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      
+      /* Flexbox to position the content */
+      display: flex;
+      justify-content: flex-end; /* ALIGN TO THE RIGHT */
+      align-items: stretch; /* STRETCH TO FILL HEIGHT */
+      padding: 0; /* REMOVED PADDING to touch edges */
+      overflow: hidden; /* Prevent scrolling */
+    }
+
+    /* --- CONTAINER WRAPPER --- */
+    .login-container {
+      width: 100%;
+      max-width: 500px; /* Slightly wider for a sidebar */
+      margin-right: 0; /* REMOVED MARGIN to stick to edge */
+      height: 100%; /* Full height */
+    }
+
+    /* --- LOGIN CONTENT (Glass Effect Sidebar) --- */
+    .login-content {
+      background-color: rgba(255, 255, 255, 0.65); /* Slightly less transparent for readability */
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-left: 1px solid rgba(255, 255, 255, 0.5); /* Border only on the left side */
+      
+      width: 100%;
+      height: 100%; /* Fill the container height */
+      text-align: center;
+      padding: 40px;
+      border-radius: 0; /* REMOVED ROUNDED CORNERS for edge look */
+      box-shadow: -5px 0 35px rgba(0, 0, 0, 0.1); 
+
+      /* Center content vertically inside the sidebar */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* --- FORM STYLING --- */
+    .logo {
+      width: 100px;
+      margin-bottom: 15px;
+      margin-left: auto; /* Centers logo in flex column */
+      margin-right: auto;
+    }
+
+    /* SALIKSIK STYLE */
+    .saliksik {
+      font-family: 'Knewave', cursive;
+      font-size: 35px; 
+      color: #711E1E; 
+      text-shadow: -2px -2px 0 #FFE732, 1px -1px 0 #FFE732, -1px 1px 0 #FFE732, 1px 1px 0 #FFE732;
+      margin-bottom: 5px; 
+      letter-spacing: 2px; 
+    }
+
+    .branch-name {
+      font-size: 16px;
+      font-weight: 700; 
+      color: #222; 
+      margin-bottom: 40px; /* Added more space */
+      text-transform: uppercase; 
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 5px;
+      color: #222;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #444; 
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+
+    /* Form Elements */
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 8px;
+      font-weight: 700; 
+      color: #222;
+      font-size: 14px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    /* Icons */
+    .input-group i {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #555;
+      font-size: 16px;
+    }
+
+    .input-group .fa-user,
+    .input-group .fa-lock {
+      left: 15px;
+      z-index: 1;
+    }
+
+    /* Input Fields */
+    .input-group input {
+      width: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.1); 
+      border-radius: 8px; 
+      font-size: 14px;
+      transition: 0.3s;
+      background-color: rgba(255, 255, 255, 0.7); 
+      padding: 12px 40px 12px 40px; 
+    }
+
+    .input-group input:focus {
+      border-color: #711E1E; 
+      background-color: #fff; 
+      outline: none;
+      box-shadow: 0 0 5px rgba(113, 30, 30, 0.2);
+    }
+
+    /* Hide Default Eye */
+    .input-group input::-ms-reveal,
+    .input-group input::-ms-clear {
+      display: none;
+    }
+
+    /* Custom Eye Icon */
+    #togglePassword {
+      position: absolute;
+      right: 15px; 
+      top: 50%;
+      transform: translateY(-50%);
+      color: #555;
+      cursor: pointer;
+      display: none; 
+      font-size: 16px;
+      z-index: 2;
+      left: auto; 
+    }
+
+    #togglePassword:hover {
+      color: #711E1E;
+    }
+
+    /* Forgot Password */
+    .forgot {
+      display: block;
+      text-align: right;
+      font-size: 13px;
+      color: #711E1E;
+      text-decoration: none;
+      margin-bottom: 25px;
+      font-weight: 600;
+      text-shadow: 0 0 1px rgba(255,255,255,0.5); 
+    }
+
+    .forgot:hover {
+      text-decoration: underline;
+    }
+
+    /* Button */
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #711E1E; 
+      color: #fff;
+      border: none; 
+      border-radius: 8px; 
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+      background-color: #5a1818;
+    }
+
+    /* --- MOBILE RESPONSIVENESS --- */
+    @media (max-width: 768px) {
+      .login-container {
+        max-width: 100%; /* Full width on mobile */
+      }
+      .login-content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="login-content">
+      <img src="puplogo.png" alt="Logo" class="logo">
+      
+      <h1 class="saliksik">SALIKSIK</h1>
+      
+      <p class="branch-name">PUP-Parañaque Library</p>
+
+      <h2>Login</h2>
+      <p class="subtitle">Sign in to access Admin</p>
+
+      <form>
+        <label for="username">Username</label>
+        <div class="input-group">
+          <i class="fa-solid fa-user"></i>
+          <input type="text" id="username" placeholder="Enter your username" />
+        </div>
+
+        <label for="password">Password</label>
+        <div class="input-group">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" id="password" placeholder="Enter your password" />
+          <i class="fa-solid fa-eye-slash" id="togglePassword"></i> 
+        </div>
+
+        <a href="#" class="forgot">Forgot Password?</a>
+        <button type="submit" class="btn">SIGN IN</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+
+    togglePassword.style.display = 'none';
+
+    password.addEventListener('input', function () {
+      if (password.value.length > 0) {
+        togglePassword.style.display = 'block';
+      } else {
+        togglePassword.style.display = 'none';
+      }
+    });
+
+    togglePassword.addEventListener('click', function () {
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      
+      this.classList.toggle('fa-eye-slash');
+      this.classList.toggle('fa-eye');
+    });
+  </script>
+</body>
+</html>
